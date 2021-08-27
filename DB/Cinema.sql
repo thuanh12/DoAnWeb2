@@ -1,10 +1,10 @@
-    drop table tickets;
-    drop table bookings;
-    drop table showtimes;
-    drop table uzers;
-    drop table cinemarooms;
-    drop table cinemas;
-    drop table movies;
+    -- drop table tickets;
+    -- drop table bookings;
+    -- drop table showtimes;
+    -- drop table uzers;
+    -- drop table cinemarooms;
+    -- drop table cinemas;
+    -- drop table movies;
 
 create table if not exists movies(
 	id serial primary key not null,
