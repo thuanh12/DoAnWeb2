@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+	<!--Made with love by Mutiullah Samim -->
+
+	<!--Bootsrap 4 CDN-->
+	<script src="js/jquery-1.4.2.min.js"></script>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="js/bootstrap.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!--Fontawesome CDN-->
+	<link rel="stylesheet" href="css/bootstrap.min.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">    
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-func.js"></script>
+	<script src="js/jquery.js"></script>
+
+</head>
+<body> 
+<!-- Shell -->
+<div id="shell">
+
+	<!-- Header -->
+	<% include header.ejs %>
+	<!-- end Header -->
+	<!-- Main -->
+	<div class="container" style="margin-top: 50px;margin-bottom: 100px;">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    <div class="card-header">
+                        <a style="text-decoration-line: none;" href="/login"><button class = "btn btn-default">Đăng Nhập</button></a>
+                        <a style="text-decoration-line: none;" href="/register"><button class = "btn btn-primary">Đăng Kí</button></a>
+                    </div>
+                    <div class="card-body" style= "margin-top: 20px;">
+                        <form method="POST" action="/handleRegister">
+                            <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user">FullName</i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Full name" name = "fullname" required>
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user">Email</i></span>
+                                </div>
+                                <input type="email" class="form-control" placeholder="email" name = "email" required>
+                            </div>
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i>Password</span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="password" name = "password" required>
+                            </div>
+                            <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-key"></i>Telephone</span>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="telephone" name = "telephone" required>
+                            </div>
+                            <input type = "submit" value="Register" class = "btn btn-primary">
+                        </form>
+                        <%if (register == "false") {%>
+                            <h3 style="color: red">Email or password existed.</h3>
+                        <%}%>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+	<!-- end Main -->
+	<!-- Footer -->
+	<% include footer.ejs %>
+	<!-- end Footer -->
+</div>
+<!-- end Shell -->
+</body>
+</html>

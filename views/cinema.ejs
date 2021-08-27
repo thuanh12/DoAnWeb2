@@ -1,0 +1,60 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<title>HS Movie</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/datve.css" type="text/css" media="all" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-func.js"></script>
+</head>
+<body> 
+<!-- Shell -->
+<div id="shell">
+
+	<!-- Header -->
+	<% include header.ejs %>
+	<!-- end Header -->
+	<!-- Main -->
+	<!-- <div id="main">
+        <div id="content" class="container"></div> -->
+            <!-- <div class="example"> -->
+    <div class="menuholder" style="margin-top: 30px;">
+        <ul class="menu slide">
+			<% result.forEach(function(item) { %>
+				<li><a href="/movieListByCinema?id=<%=item.id%>" class="red"><%=item.name%></a>
+					<div class="subs">
+						<%item.cinemarooms.forEach(function(item1) {%>
+							<dl><li><a href="/movieListByCinemaRoom?id=<%=item1.id%>"><%=item1.name%></a></li></dl>
+						<%})%>
+						
+					</div>
+				</li>
+			<%});%>
+        </ul>
+        <div class="back"></div>
+        <div class="shadow"></div>
+    </div>
+    <div style="clear:both"></div>
+</div>
+		<!-- end Content -->	
+		<div style="visibility: hidden;">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+		<div style="visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+		<div style="visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>	
+		<div style="visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+		<!-- end Coming -->
+		<div class="cl">&nbsp;</div>
+	</div>
+	<!-- end Main -->
+	<!-- Footer -->
+	<% include footer.ejs %>
+	<!-- end Footer -->
+</div>
+<!-- end Shell -->
+</body>
+</html>

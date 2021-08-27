@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+	<!--Made with love by Mutiullah Samim -->
+
+	<!--Bootsrap 4 CDN-->
+	<script src="js/jquery-1.4.2.min.js"></script>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="js/bootstrap.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!--Fontawesome CDN-->
+	<link rel="stylesheet" href="css/bootstrap.min.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		    
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-func.js"></script>
+	<script src="js/jquery.js"></script>
+
+</head>
+<body> 
+<!-- Shell -->
+<div id="shell">
+
+	<!-- Header -->
+	<% include header.ejs %>
+	<!-- end Header -->
+	<!-- Main -->
+	<div class="container" style="margin-top: 50px;margin-bottom: 100px;">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<button class = "btn btn-primary"><a style="text-decoration-line: none;" href="/login">Đăng Nhập</a></button>
+					<button class = "btn btn-default"><a style="text-decoration-line: none;" href="/register">Đăng Kí</a></button>
+				</div>
+				<div class="card-body" style= "margin-top: 20px;">
+					<form action="/handleLogin" method="POST">
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i>Email</span>
+							</div>
+							<input type="email" class="form-control" placeholder="email" required name="email">
+
+						</div>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i>Password</span>
+							</div>
+							<input type="password" class="form-control" placeholder="password" required name="password">
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Login" class="btn btn-primary">
+						</div>
+					</form>
+					<%if (login == "false") {%>
+						<h3 style="color: red">Email or Password incorrect. Please type in again.</h3>
+					<%}%>
+				</div>
+				<div class="card-footer">
+					<div class="d-flex justify-content-center links">
+						Don't have an account?
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="#">Forgot your password?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end Main -->
+	<!-- Footer -->
+	<% include footer.ejs %>
+	<!-- end Footer -->
+</div>
+<!-- end Shell -->
+</body>
+</html>

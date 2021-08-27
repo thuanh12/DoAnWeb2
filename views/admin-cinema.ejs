@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--Made with love by Mutiullah Samim -->
+
+    <!--Bootsrap 4 CDN-->
+    <!-- <script src="js/jquery-1.4.2.min.js"></script> -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="js/bootstrap.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+    <!-- <script type="text/javascript" src="js/jquery-func.js"></script> -->
+    <script src="js/jquery-1-9-1.js"></script>
+    <style>
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        } */
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Shell -->
+    <div id="shell">
+
+        <!-- Header -->
+
+        <!-- Header -->
+        <div id="header">
+            <h1 id="logo"><a href="#">HS MOVIE </a></h1>
+            <div class="social">
+                <span>FOLLOW US ON:</span>
+                <ul>
+                    <li><a class="twitter" href="#">twitter</a></li>
+                    <li><a class="facebook" href="#">facebook</a></li>
+                    <li><a class="vimeo" href="#">vimeo</a></li>
+                    <li><a class="rss" href="#">rss</a></li>
+                </ul>
+            </div>
+
+            <!-- Navigation -->
+            <div id="navigation">
+                <ul>
+                    <li><a href="/">TRANG CHỦ</a></li>
+                    <% if (user != null) { %>
+                        <li><a href="/user?id=<%=user.id%>"><%=user.fullname%></a></li>
+                    <%} else {%>
+                        <li><a href="/login">ĐĂNG NHẬP/ĐĂNG KÍ</a></li>
+                    <%}%>
+                    
+                </ul>
+            </div>
+            <!-- end Navigation -->
+
+            <!-- Sub-menu -->
+            <div id="sub-navigation">
+                <ul>
+                    <li class="dropbtn"><a href="/">PHIM</a></li>
+                    <li><a href="/cinema">RẠP</a></li>            
+                </ul>
+                <div id="search">
+                    <form action="/home_submit" method="GET" accept-charset="utf-8">
+                        <label for="search-field">SEARCH</label>					
+                        <input type="text" name="searchField" value="Tìm kiếm" id="search-field" title="Enter search here" class="blink search-field"  />
+                        <input type="submit" value="GO!"/>
+                    </form>
+                </div>      
+            </div>
+            <!-- end Sub-Menu -->
+
+        </div>
+        <!-- end Header -->
+        <!-- start Main-->
+        <div class="container-fluid">
+            <div class="row">
+                <div style="width: 17%;float:left;margin-left: 1%;margin-top: 40px;">
+                        <ul class="nav nav-sidebar">
+                                <li >
+                                    <a href="/user?id=<%=user.id%>" >Your Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/boolkingTicketList?id=<%=user.id%>">Booking Ticket History</a>
+                                </li>
+                                <%if (user.rule === 'admin') {%>
+                                    <li>
+                                        <a href="/admincinema?id=<%=user.id%>" style="background-color:cyan;">Manage Cinema</a>
+                                    </li>
+                                    <li>
+                                        <a href="/admincinemaroom?id=<%=user.id%>">Manage Cinema Room</a>
+                                    </li>
+                                <%}%>
+                            </ul>
+                </div>
+                <div style="width: 85%;margin-left: 18%;">
+                    <div style="margin-top: 20px;">
+                        <table id="bookingticket" class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>ADDRESS</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="progress" id="spinner-id" hidden>
+                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45"
+                            aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="contextPath" value="{{contextPath}}" />
+            </div>
+            <!-- end Main -->
+
+            <div class="formAdd"
+                style="width: 350px;background-color: #dfe4ea;position: absolute;top:10%;left:40%;border-radius: 15px;box-shadow: 5px 10px 5px grey;visibility: hidden;">
+                '<button  id="close" style="padding:10px;float:right">X</button>
+                <form style="padding: 30px" method="POST" action="/cinema">
+                    <label for="lname">Name</label>
+                    <input type="text" id="name" name = "name" style="color: black">
+
+                    <label for="fname">Address</label>
+                    <input type="text" id="address" name = "address">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <!-- Footer -->
+            <div style="margin-top: 250px;">
+                <div id="footer">
+                    <p>
+                        <a href="#">HOME</a> <span>|</span>
+                        <a href="#">NEWS</a> <span>|</span>
+                        <a href="#">IN THEATERS</a> <span>|</span>
+                        <a href="#">COMING SOON </a> <span>|</span>
+                        <a href="#">LATERS TRAILERS</a> <span>|</span>
+                        <a href="#">TOP RATED TRAILERS</a> <span>|</span>
+                        <a href="#">MOST COMMENTED TRAILERS</a> <span>|</span>
+                        <a href="#">ADVERTISE</a> <span>|</span>
+                        <a href="#">CONTACT </a>
+                    </p>
+                    <p> &copy; 20019 HSMovie Designed by Team HandSome</p>
+                </div>
+            </div>
+
+            <!-- end Footer -->
+        </div>
+        <script>
+            $(document).ready(function () {
+
+                $.get("/api/cinemas", function(data, status){
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $("#bookingticket > tbody").append( '<tr><td>' + data[i].id + '</td><td>' + data[i].name + '</td><td>' + data[i].address + '</td><td>' + '<a href = "/cinema/delete?id='+ data[i].id +'"><button>' + 'Delete' + '</button></a></td><td><button class="add">Add</button></td></tr>');
+                    }
+                    $(".add").click(function () { 
+                        $(".formAdd").css("visibility", "visible"); 
+                    });
+                });
+
+                $("#close").click(function (e) {
+                    $(".formAdd").css("visibility", "hidden");
+                });
+            });
+        </script>
+        <!-- end Shell -->
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--Made with love by Mutiullah Samim -->
+
+	<!--Bootsrap 4 CDN-->
+	<script src="js/jquery-1.4.2.min.js"></script>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="js/bootstrap.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!--Fontawesome CDN-->
+	<link rel="stylesheet" href="css/bootstrap.min.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<!--Custom styles-->
+    
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-func.js"></script>
+	<script src="js/jquery.js"></script>
+</head>
+<body> 
+<!-- Shell -->
+<div id="shell">
+
+	<!-- Header -->
+	<% include header.ejs %>
+    <!-- end Header -->
+    <!-- start Main-->
+    <div class="container-fluid">
+        <div class="row">
+            <div style="width: 17%;float:left;margin-left: 1%;margin-top: 40px;">
+                    <ul class="nav nav-sidebar">
+                            <li >
+                                <a href="/user?id=<%=user.id%>">Your Profile</a>
+                            </li>
+                            <li>
+                                <a href="/boolkingTicketList?id=<%=user.id%>" style="background-color:cyan;">Booking Ticket History</a>
+                            </li>
+                            <%if (user.rule === 'admin') {%>
+                                <li>
+                                    <a href="/admincinema?id=<%=user.id%>">Manage Cinema</a>
+                                </li>
+                                <li>
+                                    <a href="/admincinemaroom?id=<%=user.id%>" >Manage Cinema Room</a>
+                                </li>
+                            <%}%>
+                        </ul>
+            </div>
+            <div style="width: 85%;margin-left: 18%;">
+                <div style="margin-top: 20px;">
+                    <table id="bookingticket" class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Movie</th>
+                                <th>CinemaRoom</th>
+                                <th>Cinema</th>
+                            </tr>
+                        </thead>
+                        <tbody>          
+                        </tbody>
+                    </table>
+            </div>
+            <div class="progress" id="spinner-id" hidden>
+                <div class="progress-bar progress-bar-striped active"
+                        role="progressbar" aria-valuenow="45"
+                        aria-valuemin="0" aria-valuemax="100"
+                        style="width: 100%">
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="contextPath" value="{{contextPath}}"/>
+    </div>
+	<!-- end Main -->
+    <!-- Footer -->
+    <div style="margin-top: 250px;">
+        <% include footer.ejs %>
+    </div>
+	
+	<!-- end Footer -->
+</div>
+<script>
+    $(document).ready(function() {
+        $.get("/api/bookingTicketList?id=1", function(data, status){
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var timeofbooking = "";
+                var movieName = "";
+                var cinemaRoomName = "";
+                var cinemaName = "";
+                if (data[i].timeofbooking) {
+                    timeofbooking = data[i].timeofbooking
+                }
+                if (data[i].showtime && data[i].showtime.movie) {
+                    movieName = data[i].showtime.movie.name;
+                }
+                if (data[i].showtime && data[i].showtime.cinemaroom) {
+                    cinemaRoomName = data[i].showtime.cinemaroom.name
+                }
+                if (data[i].showtime && data[i].showtime.cinemaroom && data[i].showtime.cinemaroom.cinema) {
+                    cinemaName = data[i].showtime.cinemaroom.cinema.name;
+                }
+
+                $("#bookingticket > tbody").append( '<tr><td>' + timeofbooking + '</td><td>' + movieName + '</td><td>' + cinemaRoomName + '</td><td>' +  cinemaName + '</td></tr>');
+            }
+            
+        });
+    });
+</script>
+<!-- end Shell -->
+</body>
+</html>

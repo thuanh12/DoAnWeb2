@@ -1,0 +1,35 @@
+.fas {
+  font-size: 75px;
+}
+#chairmain {
+  align-items: stretch;
+  flex-wrap: wrap;
+  align-content: space-between;
+  height: 100%;
+}
+
+.boxx {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 30px;
+  align-items: center;
+}
+
+#tivi {
+  font-size: 300px;
+}
+
+.titleChair {
+  font-size: 150px;
+  font-weight: bold;
+  color: #ecf0f1;
+}
+.fa-couch:hover {
+  color: #ff7675;
+  cursor: pointer;
+}
+
+.fa-couch:checked {
+  display: block;
+}

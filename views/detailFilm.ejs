@@ -1,0 +1,126 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<title>HS Movie</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/datve.css" type="text/css" media="all" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-func.js"></script>
+</head>
+
+<body>
+	<!-- Shell -->
+	<div id="shell">
+		<!-- Header -->
+		<div id="header">
+			<h1 id="logo"><a href="index.html">HS MOVIE </a></h1>
+			<div class="social">
+				<span>FOLLOW US ON:</span>
+				<ul>
+
+					<li><a class="twitter" href="#">twitter</a></li>
+					<li><a class="facebook" href="#">facebook</a></li>
+					<li><a class="vimeo" href="#">vimeo</a></li>
+					<li><a class="rss" href="#">rss</a></li>
+				</ul>
+			</div>
+
+			<!-- Navigation -->
+            <div id="navigation">
+                <ul>
+                    <li><a href="/">TRANG CHỦ</a></li>
+                    <% if (user != null) { %>
+                        <li><a href="/user?id=<%=user.id%>"><%=user.fullname%></a></li>
+                    <%} else {%>
+                        <li><a href="/login">ĐĂNG NHẬP/ĐĂNG KÍ</a></li>
+                    <%}%>
+                    
+                </ul>
+            </div>
+			<!-- end Navigation -->
+
+			<!-- Sub-menu -->
+			<div id="sub-navigation">
+				<ul>
+					<li class="dropbtn"><a href="/">PHIM</a></li>
+					<li><a href="/cinema">RẠP</a></li>
+				</ul>
+				<div id="search">
+					<form action="home_submit" method="get" accept-charset="utf-8">
+						<label for="search-field">SEARCH</label>
+						<input type="text" name="search field" value="Tìm kiếm" id="search-field"
+							title="Enter search here" class="blink search-field" />
+						<input type="submit" value="GO!" class="search-button" />
+					</form>
+				</div>
+			</div>
+			<!-- end Sub-Menu -->
+		</div>
+		<!-- end Header -->
+        <!-- Main -->
+        <form>
+            <div id="main">
+                <div id="content" class="container">
+                    <p style="color:white">Nội Dung Phim </p>
+                    <hr/>
+                    <br/>
+                    <input type="hidden" name = "id" value="<%=result.id%>">
+                    <div id="post">
+                        <img src="css/images/<%=result.imageposter%>" alt="movie" width="300px", height="400px" />
+                    </div>
+                        <div id="sidebar">
+                            <h3><%=result.name%></h3>
+                            <hr size="1px"/>
+                            <div >
+                                <label>Thể loại: </label>
+                                <label>&nbsp;<%=result.type%></label>
+                            </div>
+                            <div >
+                                <label>Khởi chiếu: </label>
+                                <label>&nbsp; <%=result.openningday%></label>
+                            </div>
+                            <div >
+                                <label>Thời lượng: </label>
+                                <label>&nbsp; <%=result.duration%> Phút</label>
+							</div>
+							<a href="/ticketBooking?id=<%=result.id%>">
+                            <div>
+                                <input type="button" value="Mua Ve"></input>
+                            </div></a>
+                    </div>
+                </div>
+            </div>
+    
+        </form>
+		
+		<div class="cl">&nbsp;</div>
+	</div>
+	<!-- end Main -->
+
+	<!-- Footer -->
+	<div id="footer">
+		<p>
+			<a href="#">HOME</a> <span>|</span>
+			<a href="#">NEWS</a> <span>|</span>
+			<a href="#">IN THEATERS</a> <span>|</span>
+			<a href="#">COMING SOON </a> <span>|</span>
+			<a href="#">LATERS TRAILERS</a> <span>|</span>
+			<a href="#">TOP RATED TRAILERS</a> <span>|</span>
+			<a href="#">MOST COMMENTED TRAILERS</a> <span>|</span>
+			<a href="#">ADVERTISE</a> <span>|</span>
+			<a href="#">CONTACT </a>
+		</p>
+		<p> &copy; 20019 HSMovie Designed by Team HandSome</p>
+	</div>
+	<!-- end Footer -->
+	</div>
+	<!-- end Shell -->
+</body>
+
+</html>

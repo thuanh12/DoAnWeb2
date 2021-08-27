@@ -1,0 +1,118 @@
+<% include head.ejs %>
+<body> 
+<!-- Shell -->
+<div id="shell">
+
+	<!-- Header -->
+	<% include header.ejs %>
+	<!-- end Header -->
+	<!-- Main -->
+	<div id="main">
+		<!-- Content -->
+		<div id="content">
+			<!-- Box -->
+			<div class="box">
+				<div class="head">
+					<h1>PHIM ĐANG CHIẾU</2>
+					<p class="text-right"><a href="#"></a></p>
+				</div>
+				<!-- Movie -->
+				<% count = 6%>
+				<% i = 0%>
+				<% result.movieOnScreen.forEach(function(item) { %>
+					<div class="movie">
+							<div class="movie-image">
+								<a href="/detailFilm?id=<%=item.id%>"><span class="play"></span><img src="css/images/<%=item.imageposter%>" alt="movie" /></a>
+							</div>		
+							<div class="rating">
+								<p><%= item.name%></p>
+								<div>
+									<span class="info">Thể loại: </span>
+									<span><%= item.type %></span>
+								</div>
+								<div>
+									<span class="info">Thời lượng: </span>
+									<span ><%=item.duration%> Phút</span>
+								</div>
+								<div >
+									<span class="info">Khởi chiếu: </span>
+									<span><%=item.openningday%></span>
+								</div>					
+								<a href="/ticketBooking?id=<%=item.id%>"><button  class="btn btn-booking" style="color: sienna">Mua vé</button></a>
+							</div>
+					</div>
+					<% i++ %>
+					<% if (i == count) { %>
+						<div style = "visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+						<div style = "visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+						<% count = count + 6 %>
+					<%} %>
+				<% }) %>
+				<div style = "visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+				<% if (isMovieOnScreenSeeAll == false) { %>
+					<p class="text-right" style="color:coral"><a href="/?isMovieOnScreenSeeAll=all&isMovieComingSoonSeeAll=less">See All</a></p>
+				<% } else { %>
+					<p class="text-right" style="color:coral"><a href="/?isMovieOnScreenSeeAll=less">Less	</a></p>
+				<% } %>
+				<div style = "visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+				<div class="head">
+					<h1>PHIM SẮP CHIẾU</h1>
+					<p class="text-right"><a href="#"></a></p>
+				</div>
+				<% count = 6%>
+				<% i = 0%>
+				<% result.movieComingSoon.forEach(function(item) { %>
+					<div class="movie">
+							<div class="movie-image">
+								<a href="/detailFilm?id=<%=item.id%>"><span class="play"></span><img src="css/images/<%=item.imageposter%>" alt="movie" /></a>
+							</div>		
+							<div class="rating">
+								<p><%= item.name%></p>
+								<div>
+									<span class="info">Thể loại: </span>
+									<span><%= item.type %></span>
+								</div>
+								<div>
+									<span class="info">Thời lượng: </span>
+									<span ><%=item.duration%> Phút</span>
+								</div>
+								<div >
+									<span class="info">Khởi chiếu: </span>
+									<span><%=item.openningday%></span>
+								</div>					
+								<a href="/ticketBooking?id=<%=item.id%>"><button  class="btn btn-booking" style="color: sienna" >Mua vé</button></a>
+							</div>
+					</div>
+					<% i++ %>
+					<% if (i == count) { %>
+						<div style = "visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+						<div style = "visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+						<% count = count + 6 %>
+					<%} %>
+					<% }) %>
+					<div style = "visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+					<% if (isMovieComingSoonSeeAll == false) { %>
+						<p class="text-right" style="color:coral"><a href="/?isMovieComingSoonSeeAll=all&isMovieOnScreenSeeAll=less">See All</a></p>
+					<% } else { %>
+						<p class="text-right" style="color:coral"><a href="/?isMovieComingSoonSeeAll=less">Less</a></p>
+					<% } %>
+				
+			</div>
+			
+		</div>
+		<!-- end Content -->	
+		<div style="visibility: hidden;">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+		<div style="visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+		<div style="visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>	
+		<div style="visibility: hidden">eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+		<!-- end Coming -->
+		<div class="cl">&nbsp;</div>
+	</div>
+	<!-- end Main -->
+	<!-- Footer -->
+	<% include footer.ejs %>
+	<!-- end Footer -->
+</div>
+<!-- end Shell -->
+</body>
+</html>

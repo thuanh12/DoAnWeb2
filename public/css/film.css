@@ -1,0 +1,12 @@
+.rating p{
+    font-size: 15px;
+    color: rgb(224, 104, 83);
+    font-weight:bold;
+}
+.rating ul{
+    text-decoration: none;
+}
+.info{
+    font-weight: bold;
+    font-size:15px;
+}

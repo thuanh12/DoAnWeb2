@@ -1,0 +1,134 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<title>HS Movie</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/rap.css" type="text/css" media="all" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-func.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .line{
+            padding: 0px 0px;
+        }
+    </style>
+</head>
+
+<body>
+	<!-- Shell -->
+	<div id="shell">
+		<!-- Header -->
+		<div id="header">
+			<h1 id="logo"><a href="index.html">HS MOVIE </a></h1>
+			<div class="social">
+				<span>FOLLOW US ON:</span>
+				<ul>
+
+					<li><a class="twitter" href="#">twitter</a></li>
+					<li><a class="facebook" href="#">facebook</a></li>
+					<li><a class="vimeo" href="#">vimeo</a></li>
+					<li><a class="rss" href="#">rss</a></li>
+				</ul>
+			</div>
+
+			<!-- Navigation -->
+            <div id="navigation">
+                <ul>
+                    <li><a href="/">TRANG CHỦ</a></li>
+                    <% if (user != null) { %>
+                        <li><a href="/user?id=<%=user.id%>"><%=user.fullname%></a></li>
+                    <%} else {%>
+                        <li><a href="/login">ĐĂNG NHẬP/ĐĂNG KÍ</a></li>
+                    <%}%>
+                    
+                </ul>
+            </div>
+			<!-- end Navigation -->
+
+			<!-- Sub-menu -->
+			<div id="sub-navigation">
+                <ul>
+                    <li class="dropbtn"><a href="/">PHIM</a></li>
+                    <li><a href="/cinema">RẠP</a></li>            
+                </ul>
+                <div id="search">
+                    <form action="/home_submit" method="GET" accept-charset="utf-8">
+                        <label for="search-field">SEARCH</label>					
+                        <input type="text" name="searchField" value="Tìm kiếm" id="search-field" title="Enter search here" class="blink search-field"  />
+                        <input type="submit" value="GO!" class="search-button" />
+                    </form>
+                </div>      
+            </div>
+			<!-- end Sub-Menu -->
+
+		</div>
+		<!-- end Header -->
+
+		<!-- Main -->
+        <div id="main">
+			<div id="content" class="container">
+                    <hr width="900px"/>
+                     <br/>
+                            <div id="post">
+                                <img src="css/images/<%=movie.imageposter%>" alt="movie" width="250px", height="350px" />
+                                <div class="line"><%=movie.name%></div>
+                                <div class="line">Thể loại: <%=movie.type%></div>
+                                <div class="line">Thời lượng: <%=movie.duration%> phút</div>
+                                <div class="line">Khởi chiếu: <%=movie.openningday%></div>
+                            </div>
+                            <div id="sidebar">
+                                <p style="color:white"><%=movie.name%></p>
+                                <%cinemarooms.forEach((item) => {%>
+                                    <div>
+                                        <label><%=item.type%></label>
+                                    </div>
+                                    <%item.showtimes.forEach((item) => {%>
+                                    <%if (user == null) {%>
+                                        <a href="/bookingTicket?userId=null&showtimeId=<%=item.id%>">
+                                    <%} else {%>
+                                        <a href="/bookingTicket?userId=<%=user.id%>&showtimeId=<%=item.id%>">
+                                    <%}%>
+                                        <div>
+                                                <button class="btn btn-primary">
+                                                        <span><%=item.timestart%> PM</span>
+                                                        <br>
+                                                        <span><%=item.amount%> ghế trống</span>
+                                                </button>
+                                            
+                                        </div>
+                                    </a>
+                                    <%});%>
+                                <%})%>
+			</div>
+        </div>
+		<div class="cl">&nbsp;</div>
+	</div>
+	<!-- end Main -->
+
+	<!-- Footer -->
+	<div id="footer">
+		<p>
+			<a href="#">HOME</a> <span>|</span>
+			<a href="#">NEWS</a> <span>|</span>
+			<a href="#">IN THEATERS</a> <span>|</span>
+			<a href="#">COMING SOON </a> <span>|</span>
+			<a href="#">LATERS TRAILERS</a> <span>|</span>
+			<a href="#">TOP RATED TRAILERS</a> <span>|</span>
+			<a href="#">MOST COMMENTED TRAILERS</a> <span>|</span>
+			<a href="#">ADVERTISE</a> <span>|</span>
+			<a href="#">CONTACT </a>
+		</p>
+		<p> &copy; 20019 HSMovie Designed by Team HandSome</p>
+	</div>
+	<!-- end Footer -->
+	</div>
+	<!-- end Shell -->
+</body>
+
+</html>
